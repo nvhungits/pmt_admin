@@ -175,16 +175,18 @@
 																<ul class="list-unstyled">
 																	<li *ngFor="let cat of categories">
 																		<label>
-																			<input type="checkbox" name="categories" [checked]="cat.id == product.category_id">
-																			{{cat.name}}
+																			<input type="checkbox" name="categories" (change)="changeCategory(cat.id)" [checked]="cat.id == product.category_id">
+																			{{cat.name}}<br/>
+																			
 																		</label>
 																		<ul class="list-unstyled" *ngIf="cat.sub_categories.length > 0">
 																			<li *ngFor="let subCate of subcategories">
 																				<label *ngIf="subCate.category_id == cat.id">
-																					<input type="checkbox" name="subcategories" [checked]="subCate.id == product.subcategory_id">
+																					<input type="checkbox" name="subcategories" (change)="changeSubCategory(subCate.id)" [checked]="subCate.id == product.subcategory_id">
 																					{{subCate.name}}
 																				</label>
-																			</li>
+																			</li><br/>
+																			
 																		</ul>
 																	</li>
 																</ul>
