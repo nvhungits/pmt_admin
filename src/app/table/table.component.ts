@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { Product } from '../product';
 import { Company } from '../company';
 import { Subcategory } from '../subcategory';
+import { DomSanitizer } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-table',
@@ -11,7 +12,7 @@ import { Subcategory } from '../subcategory';
 })
 export class TableComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private DomSanitizer: DomSanitizer) { }
 
   products:  Product[];
   subcategories:  Subcategory[];
@@ -20,7 +21,6 @@ export class TableComponent implements OnInit {
   ngOnInit() {
     this.apiService.getProduct().subscribe((products: Product[])=>{
       this.products = products;
-      console.log(this.products);
     })
 
     this.apiService.getCompanyInfo().subscribe((companies: Company[])=>{
@@ -37,7 +37,6 @@ export class TableComponent implements OnInit {
 
     this.apiService.getSubcategory().subscribe((subcategories: Subcategory[])=>{
       this.subcategories = subcategories;
-      console.log(this.subcategories);
     })
   }
 

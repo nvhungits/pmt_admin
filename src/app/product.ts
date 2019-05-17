@@ -8,4 +8,5 @@ export  class  Product {
     unit: string;
     category_id: number;
     subcategory_id: number;
+    image_base64: string;
 }

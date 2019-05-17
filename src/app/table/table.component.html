@@ -123,7 +123,7 @@
 								</select>
 								<button class="btn btn-sm yellow table-group-action-submit"><i class="fa fa-check"></i> Submit</button>
 							</div>
-							<table class="table table-striped table-bordered table-hover" id="datatable_products">
+							<table datatable class="table table-striped table-bordered table-hover" id="datatable_products">
 							<thead>
 							<tr role="row" class="heading">
 								<th width="1%">
@@ -161,7 +161,7 @@
 										<a href="/form/'{{item.id}}">
 											<img 
 												style="width:100px;" 
-												src="https://phucminhtam.net/assets/frontend/pages/img/products/{{item.image}}" class="img-responsive" alt="{{item.name}}">
+												[src]="DomSanitizer.bypassSecurityTrustUrl(item.image_base64)" class="img-responsive" alt="{{item.name}}">
 										</a>
 									</td>
 									<td>{{item.id}}</td>
@@ -183,3 +183,9 @@
 	</div>
 </div>
 <!-- END CONTENT -->
+
+<script>
+	$(document).ready(function() {
+		
+	} );
+</script>

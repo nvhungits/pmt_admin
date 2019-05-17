@@ -4,6 +4,7 @@ import { Product } from  './product';
 import { Company } from  './company';
 import { Subcategory } from  './subcategory';
 import { Observable } from  'rxjs';
+import { Category } from './category';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +31,14 @@ export class ApiService {
     return this.httpClient.get<Subcategory[]>(`${this.PHP_API_SERVER}/subcategory.php`);
   }
 
-  uploadImage(image: File): Observable<Response> {
+  getCategory(): Observable<Category[]>{
+    return this.httpClient.get<Category[]>(`${this.PHP_API_SERVER}/category.php`);
+  }
+
+  uploadImage(fileToUpload: File): Observable<Response> {
     const formData = new FormData();
-
-    formData.append('image', image);
-
+    formData.append('fileToUpload', fileToUpload);
+    console.log(formData.get("fileToUpload"));
     return this.httpClient.post<Response>(`${this.PHP_API_SERVER}/product_image_upload.php`, formData);
   }
 }

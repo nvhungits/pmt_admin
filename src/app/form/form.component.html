@@ -155,15 +155,14 @@
 														* </span>
 														</label>
 														<div class="col-md-10">
-															<img style="width:200px;" src="https://phucminhtam.net/assets/frontend/pages/img/products/{{product.image}}" />
+															<img style="width:100px;" [src]="DomSanitizer.bypassSecurityTrustUrl(product.image_base64)" />
 															<label class="image-upload-container btn btn-bwm">
-															<span>Select Image</span>
+																<span>Select Image</span>
 																<input #imageInput
 																		type="file"
 																		accept="image/*"
-																		(change)="processFile(imageInput)">
+																		(change)="changeImage(imageInput)">
 															</label>
-															<!--<imageUploadCropper [postUrl]="postimageProfileUrl"></imageUploadCropper>-->
 														</div>
 													</div>
 												<div class="form-group">
@@ -174,54 +173,17 @@
 														<div class="form-control height-auto">
 															<div class="scroller" style="height:275px;" data-always-visible="1">
 																<ul class="list-unstyled">
-																	<li>
-																		<label><input type="checkbox" name="product[categories][]" value="1">Mens</label>
-																		<ul class="list-unstyled">
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Footwear</label>
-																			</li>
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Clothing</label>
-																			</li>
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Accessories</label>
-																			</li>
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Fashion Outlet</label>
-																			</li>
-																		</ul>
-																	</li>
-																	<li>
-																		<label><input type="checkbox" name="product[categories][]" value="1">Football Shirts</label>
-																		<ul class="list-unstyled">
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Premier League</label>
-																			</li>
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Football League</label>
-																			</li>
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Serie A</label>
-																			</li>
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Bundesliga</label>
-																			</li>
-																		</ul>
-																	</li>
-																	<li>
-																		<label><input type="checkbox" name="product[categories][]" value="1">Brands</label>
-																		<ul class="list-unstyled">
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Adidas</label>
-																			</li>
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Nike</label>
-																			</li>
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Airwalk</label>
-																			</li>
-																			<li>
-																				<label><input type="checkbox" name="product[categories][]" value="1">Kangol</label>
+																	<li *ngFor="let cat of categories">
+																		<label>
+																			<input type="checkbox" name="categories" [checked]="cat.id == product.category_id">
+																			{{cat.name}}
+																		</label>
+																		<ul class="list-unstyled" *ngIf="cat.sub_categories.length > 0">
+																			<li *ngFor="let subCate of subcategories">
+																				<label *ngIf="subCate.category_id == cat.id">
+																					<input type="checkbox" name="subcategories" [checked]="subCate.id == product.subcategory_id">
+																					{{subCate.name}}
+																				</label>
 																			</li>
 																		</ul>
 																	</li>
@@ -248,11 +210,11 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-md-2 control-label">SKU: <span class="required">
+													<label class="col-md-2 control-label">UNIT: <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-10">
-														<input type="text" class="form-control" name="product[sku]" placeholder="">
+														<input type="text" class="form-control" name="product[unit]" [(ngModel)]="product.unit" placeholder="">
 													</div>
 												</div>
 												<div class="form-group">
