@@ -70,4 +70,12 @@ export class TableComponent implements OnInit {
     return products;
   }
 
+  deleteProduct(product, index){
+    if(confirm("Are you sure to delete ?")) {
+      this.apiService.deleteProduct(product.id).subscribe((product: Product)=>{
+        this.products.splice(index, 1);
+      });
+    }
+  }
+
 }

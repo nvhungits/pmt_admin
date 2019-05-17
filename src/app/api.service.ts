@@ -11,7 +11,7 @@ import { Category } from './category';
 })
 export class ApiService {
 
-  PHP_API_SERVER = "http://phucminhtam.net";
+  PHP_API_SERVER = "http://phucminhtam.net/php";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,6 +21,10 @@ export class ApiService {
 
   updateProduct(product: Product): Observable<Product>{
     return this.httpClient.put<Product>(`${this.PHP_API_SERVER}/update_product.php`, product);
+  }
+
+  deleteProduct(id: number){
+    return this.httpClient.delete<Product>(`${this.PHP_API_SERVER}/delete_product.php/?id=${id}`);
   }
 
   getCompanyInfo(): Observable<Company[]>{
