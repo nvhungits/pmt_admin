@@ -80,7 +80,7 @@
 								<div class="actions btn-set">
 									<button type="button" name="back" class="btn default"><i class="fa fa-angle-left"></i> Back</button>
 									<button class="btn default"><i class="fa fa-reply"></i> Reset</button>
-									<button class="btn green" (click)="saveProduct()"><i class="fa fa-check"></i> Save</button>
+									<button class="btn green" (click)="saveProduct()"><i class="fa fa-check"></i> Lưu</button>
 									<button class="btn green"><i class="fa fa-check-circle"></i> Save & Continue Edit</button>
 									<div class="btn-group">
 										<a class="btn yellow dropdown-toggle" href="javascript:;" data-toggle="dropdown">
@@ -110,7 +110,7 @@
 									<ul class="nav nav-tabs">
 										<li class="active">
 											<a href="#tab_general" data-toggle="tab">
-											General </a>
+											Thông tin chung </a>
 										</li>
 										<li>
 											<a href="#tab_meta" data-toggle="tab">
@@ -135,7 +135,7 @@
 										<div class="tab-pane active" id="tab_general">
 											<div class="form-body">
 												<div class="form-group">
-													<label class="col-md-2 control-label">Name: <span class="required">
+													<label class="col-md-2 control-label">Tên sản phẩm: <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-10">
@@ -143,7 +143,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-md-2 control-label">Description: <span class="required">
+													<label class="col-md-2 control-label">Mô tả: <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-10">
@@ -151,13 +151,13 @@
 													</div>
 												</div>
 												<div class="form-group">
-														<label class="col-md-2 control-label">Image: <span class="required">
+														<label class="col-md-2 control-label">Ảnh đại diện: <span class="required">
 														* </span>
 														</label>
 														<div class="col-md-10">
 															<img style="width:100px;" [src]="DomSanitizer.bypassSecurityTrustUrl(product.image_base64)" />
 															<label class="image-upload-container btn btn-bwm">
-																<span>Select Image</span>
+																<span>Chọn hình ảnh mới</span>
 																<input #imageInput
 																		type="file"
 																		accept="image/*"
@@ -166,7 +166,7 @@
 														</div>
 													</div>
 												<div class="form-group">
-													<label class="col-md-2 control-label">Categories: <span class="required">
+													<label class="col-md-2 control-label">Phân loại: <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-10">
@@ -212,7 +212,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-md-2 control-label">UNIT: <span class="required">
+													<label class="col-md-2 control-label">Đơn vị: <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-10">
@@ -220,7 +220,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-md-2 control-label">Price: <span class="required">
+													<label class="col-md-2 control-label">Giá: <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-10">
