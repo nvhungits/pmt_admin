@@ -147,7 +147,8 @@
 													* </span>
 													</label>
 													<div class="col-md-10">
-														<textarea class="form-control" [(ngModel)]="product.description" name="product[description]"></textarea>
+														<!--<textarea class="form-control" [(ngModel)]="product.description" name="product[description]"></textarea>-->
+														<angular-editor [(ngModel)]="product.description" [ngModelOptions]="{standalone: true}" [config]="config"></angular-editor>
 													</div>
 												</div>
 												<div class="form-group">
@@ -228,28 +229,13 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-md-2 control-label">Tax Class: <span class="required">
-													* </span>
-													</label>
-													<div class="col-md-10">
-														<select class="table-group-action-input form-control input-medium" name="product[tax_class]">
-															<option value="">Select...</option>
-															<option value="1">None</option>
-															<option value="0">Taxable Goods</option>
-															<option value="0">Shipping</option>
-															<option value="0">USA</option>
-														</select>
-													</div>
-												</div>
-												<div class="form-group">
 													<label class="col-md-2 control-label">Status: <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-10">
 														<select class="table-group-action-input form-control input-medium" name="product[status]">
 															<option value="">Select...</option>
-															<option value="1">Published</option>
-															<option value="0">Not Published</option>
+															<option value="New">New</option>
 														</select>
 													</div>
 												</div>

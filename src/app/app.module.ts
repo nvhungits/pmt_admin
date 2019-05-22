@@ -12,6 +12,7 @@ import { TableComponent } from './table/table.component';
 import { QuickSidebarComponent } from './quick-sidebar/quick-sidebar.component';
 import { FormComponent } from './form/form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

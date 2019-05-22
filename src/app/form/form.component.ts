@@ -5,6 +5,7 @@ import { ApiService } from '../api.service';
 import { Category } from '../category';
 import { Subcategory } from '../subcategory';
 import { DomSanitizer } from '@angular/platform-browser'
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 class ImageSnippet {
   pending: boolean = false;
@@ -39,6 +40,29 @@ export class FormComponent implements OnInit {
   selectedFile: ImageSnippet;
   imageProduct: string;
 
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
+  }
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private DomSanitizer: DomSanitizer) { }
 
