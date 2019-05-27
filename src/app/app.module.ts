@@ -14,6 +14,7 @@ import { QuickSidebarComponent } from './quick-sidebar/quick-sidebar.component';
 import { FormComponent } from './form/form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     TableComponent,
     QuickSidebarComponent,
     FormComponent,
-    DashboardComponent
+    DashboardComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

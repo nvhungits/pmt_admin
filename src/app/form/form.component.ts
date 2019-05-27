@@ -4,7 +4,7 @@ import { Product} from "../product";
 import { ApiService } from '../api.service';
 import { Category } from '../category';
 import { Subcategory } from '../subcategory';
-import { DomSanitizer } from '@angular/platform-browser'
+import { DomSanitizer } from '@angular/platform-browser';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 class ImageSnippet {
