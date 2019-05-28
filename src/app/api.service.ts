@@ -11,7 +11,7 @@ import { Category } from './category';
 })
 export class ApiService {
 
-  PHP_API_SERVER = "http://phucminhtam.net/php";
+  PHP_API_SERVER = "https://phucminhtam.net/php";
 
   constructor(private httpClient: HttpClient) { }
 
