@@ -28,21 +28,21 @@
     <!-- END STYLE CUSTOMIZER -->
     <!-- BEGIN PAGE HEADER-->
     <h3 class="page-title">
-    User Account <small>user account page sample</small>
+    Cài đặt <small>Thông tin công ty</small>
     </h3>
     <div class="page-bar">
       <ul class="page-breadcrumb">
         <li>
           <i class="fa fa-home"></i>
-          <a href="index.html">Home</a>
+          <a href="index.html">Trang chủ</a>
           <i class="fa fa-angle-right"></i>
         </li>
         <li>
-          <a href="#">Pages</a>
+          <a href="#">Phúc Minh Tâm</a>
           <i class="fa fa-angle-right"></i>
         </li>
         <li>
-          <a href="#">User Account</a>
+          <a href="#">Thông tin công ty</a>
         </li>
       </ul>
       <div class="page-toolbar">
@@ -88,17 +88,17 @@
             <!-- SIDEBAR USER TITLE -->
             <div class="profile-usertitle">
               <div class="profile-usertitle-name">
-                 Marcus Doe
+                 Phúc Minh Tâm
               </div>
               <div class="profile-usertitle-job">
-                 Developer
+                 MOCHA
               </div>
             </div>
             <!-- END SIDEBAR USER TITLE -->
             <!-- SIDEBAR BUTTONS -->
             <div class="profile-userbuttons">
-              <button type="button" class="btn btn-circle green-haze btn-sm">Follow</button>
-              <button type="button" class="btn btn-circle btn-danger btn-sm">Message</button>
+              <button type="button" class="btn btn-circle green-haze btn-sm">Theo dõi</button>
+              <button type="button" class="btn btn-circle btn-danger btn-sm">Tin Nhắn</button>
             </div>
             <!-- END SIDEBAR BUTTONS -->
             <!-- SIDEBAR MENU -->
@@ -209,10 +209,33 @@
                     <!-- PERSONAL INFO TAB -->
                     <div class="tab-pane active" id="tab_1_1">
                       <form role="form" action="#">
-                        <div class="form-group">
+                        <div class="form-group col-xs-6">
                           <label class="control-label">Tên Công Ty</label>
                           <input type="text" class="form-control" [(ngModel)]="company.name" name="name"/>
                         </div>
+                        <div class="form-group col-xs-6">
+                          <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                              <img [src]="DomSanitizer.bypassSecurityTrustUrl(company.logo_base64)" alt=""/>
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                            </div>
+                            <div>
+                              <span class="btn default btn-file">
+                              <span class="fileinput-new">
+                              Chọn LOGO </span>
+                              <span class="fileinput-exists">
+                              Thay đổi </span>
+                              <input  #imageInput type="file"	accept="image/*" name="..." (change)="changeImage(imageInput)">
+                              </span>
+                              <!--
+                              <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput">
+                              Xóa </a>
+                              -->
+                            </div>
+                          </div>
+                        </div>
+                        
                         <div class="form-group">
                           <label class="control-label">Số điện thoại</label>
                           <input type="text" class="form-control" [(ngModel)]="company.phone" name="phone"/>
@@ -246,7 +269,7 @@
                           <input type="text" class="form-control" [(ngModel)]="company.website_url" name="website_url"/>
                         </div>
                         <div class="margiv-top-10">
-                          <a href="javascript:;" class="btn green-haze">
+                          <a (click)="saveCompany()" class="btn green-haze">
                           Lưu </a>
                           <a href="javascript:;" class="btn default">
                           làm mới </a>

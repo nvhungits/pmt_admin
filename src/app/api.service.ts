@@ -30,6 +30,10 @@ export class ApiService {
   getCompanyInfo(): Observable<Company[]>{
     return this.httpClient.get<Company[]>(`${this.PHP_API_SERVER}/company.php`);
   }
+
+  updateCompanyInfo(company: Company): Observable<Company>{
+    return this.httpClient.put<Company>(`${this.PHP_API_SERVER}/update_company.php`, company);
+  }
   
   getSubcategory(): Observable<Subcategory[]>{
     return this.httpClient.get<Subcategory[]>(`${this.PHP_API_SERVER}/subcategory.php`);
@@ -42,7 +46,6 @@ export class ApiService {
   uploadImage(fileToUpload: File): Observable<Response> {
     const formData = new FormData();
     formData.append('fileToUpload', fileToUpload);
-    console.log(formData.get("fileToUpload"));
     return this.httpClient.post<Response>(`${this.PHP_API_SERVER}/product_image_upload.php`, formData);
   }
 }
