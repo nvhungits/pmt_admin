@@ -15,6 +15,8 @@ import { FormComponent } from './form/form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { SettingsComponent } from './settings/settings.component';
+import { NewsComponent } from './news/news.component';
+import { EditComponent } from './news/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SettingsComponent } from './settings/settings.component';
     QuickSidebarComponent,
     FormComponent,
     DashboardComponent,
-    SettingsComponent
+    SettingsComponent,
+    NewsComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
