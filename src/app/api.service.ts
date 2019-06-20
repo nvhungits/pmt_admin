@@ -52,6 +52,9 @@ export class ApiService {
   updateNews(news: News): Observable<News>{
     return this.httpClient.put<News>(`${this.PHP_API_SERVER}/update_news.php`, news);
   }
+  deleteNews(id: number){
+    return this.httpClient.delete<News>(`${this.PHP_API_SERVER}/delete_news.php/?id=${id}`);
+  }
 
   //Image
   getImage(): Observable<Image[]>{

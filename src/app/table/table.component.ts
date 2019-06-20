@@ -71,7 +71,7 @@ export class TableComponent implements OnInit {
   }
 
   deleteProduct(product, index){
-    if(confirm("Are you sure to delete ?")) {
+    if(confirm("Bạn muốn xoá sản phẩm " + product.name + " ?")) {
       this.apiService.deleteProduct(product.id).subscribe((product: Product)=>{
         this.products.splice(index, 1);
       });

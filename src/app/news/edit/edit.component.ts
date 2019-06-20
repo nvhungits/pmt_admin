@@ -84,6 +84,7 @@ export class EditComponent implements OnInit {
   }
 
   saveNews() {
+    console.log(this.news)
     this.apiService.updateNews(this.news).subscribe((news: News)=>{
       if(this.news.id > 0)
         alert("Tin tức đã được cập nhập");

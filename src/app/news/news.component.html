@@ -142,10 +142,11 @@
               <th>
                  Trạng thái
               </th>
+              <th>Tuỳ chọn</th>
             </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let newsItem of news">
+              <tr *ngFor="let newsItem of news; let i = index">
                 <td>
                   <input type="checkbox" class="checkboxes" value="{{newsItem.id}}"/>
                 </td>
@@ -168,6 +169,7 @@
                 <td>
                   {{newsItem.status}}
                 </td>
+                <td><a (click)="deleteNews(newsItem, i)" class="btn btn-warning">Xoá</a></td>
               </tr>
             </tbody>
             </table>

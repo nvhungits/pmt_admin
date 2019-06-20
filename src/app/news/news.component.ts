@@ -38,4 +38,12 @@ export class NewsComponent implements OnInit {
     })
   }
 
+  deleteNews(news, index){
+    if(confirm("Bạn muốn xoá tin tức này ?")) {
+      this.apiService.deleteNews(news.id).subscribe((news: News)=>{
+        this.news.splice(index, 1);
+      });
+    }
+  }
+
 }
