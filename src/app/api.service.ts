@@ -6,6 +6,7 @@ import { Subcategory } from  './subcategory';
 import { Observable } from  'rxjs';
 import { Category } from './category';
 import { News } from './news';
+import { Image } from './image';
 
 @Injectable({
   providedIn: 'root'
@@ -44,12 +45,20 @@ export class ApiService {
     return this.httpClient.get<Category[]>(`${this.PHP_API_SERVER}/category.php`);
   }
 
+  //News
   getNews(): Observable<News[]>{
     return this.httpClient.get<News[]>(`${this.PHP_API_SERVER}/news.php`);
   }
   updateNews(news: News): Observable<News>{
-    console.log("news",news)
     return this.httpClient.put<News>(`${this.PHP_API_SERVER}/update_news.php`, news);
+  }
+
+  //Image
+  getImage(): Observable<Image[]>{
+    return this.httpClient.get<Image[]>(`${this.PHP_API_SERVER}/image.php`);
+  }
+  updateImage(image: Image): Observable<Image>{
+    return this.httpClient.put<Image>(`${this.PHP_API_SERVER}/update_image.php`, image);
   }
 
   uploadImage(fileToUpload: File): Observable<Response> {

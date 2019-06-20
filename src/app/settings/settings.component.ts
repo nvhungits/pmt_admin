@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service'
 import { Company } from '../company';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Image } from '../image';
 
 class ImageSnippet {
   pending: boolean = false;
@@ -19,11 +20,13 @@ export class SettingsComponent implements OnInit {
 
   company: Company;
   selectedFile: ImageSnippet;
+  imageBanners: Image[] = new Array<Image>()
 
   constructor(private apiService: ApiService, private DomSanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.getCompanyInfo();
+    this.getCompanyInfo()
+    this.getImage()
   }
 
   getCompanyInfo(){
@@ -32,6 +35,20 @@ export class SettingsComponent implements OnInit {
       if(this.company.logo_base64 == ''){
         this.company.logo_base64 = "http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image";
       }
+    });
+  }
+
+  getImage(){
+    this.apiService.getImage().subscribe((images: Image[])=>{
+      this.imageBanners = images
+    })
+  }
+  saveImage(item){
+    this.apiService.updateImage(item).subscribe((image: Image)=>{
+      if(item.id > 0)
+        alert("cập nhập")
+      else
+        alert("đã tạo 1 banner")
     });
   }
 
@@ -49,6 +66,26 @@ export class SettingsComponent implements OnInit {
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
       this.company.logo_base64 = event.target.result;
+    });
+    reader.readAsDataURL(file);
+  }
+
+  addImageBanner(){
+    this.imageBanners.push({
+      id: -1,
+      name: 'slider' + (this.imageBanners.length + 1),
+      type: 'slider',
+      status: 'active',
+      base64: ''
+    })
+  }
+
+  changeImageBanner(imageInput: any, item) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      item.base64 = event.target.result
+      console.log(this.imageBanners)
     });
     reader.readAsDataURL(file);
   }
